@@ -1,0 +1,128 @@
+/* button */
+#menuToggle
+{
+  display: block;
+  position: absolute;
+  /* top: 50px; */
+  right: 50px;
+  
+  z-index: 1;
+  
+  -webkit-user-select: none;
+  user-select: none;
+}
+#menuToggle > input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: 1px;
+  /* left: -5px; */
+  right: -150%;
+  
+  cursor: pointer;
+  
+  transform: translate(0, -50px);
+  
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+  
+  -webkit-touch-callout: none;
+}
+
+/* hamburger menu */
+#menuToggle span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  top: -50px;
+  right: -40px;
+  
+  background: #5c4746;
+  border-radius: 3px;
+
+  z-index: 1;
+  
+  /* transform: translate(0, -50px) */
+
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease; 
+}
+
+#menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+/* Rotate first menu button */
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-1px, -1px);
+  background: #9b9c9c;
+}
+/* invisible middle one */
+#menuToggle input:checked ~ span:nth-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+/* last one rotate */
+#menuToggle input:checked ~ span:nth-child(4)
+{
+  /* opacity: 0; */
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu
+{
+  position: absolute;
+  width: 270px;
+  height: 800px;
+  margin: -81% 0 0 -720%;
+  /* border-left: groove; */
+  /* border-width: thin; */
+  padding-top: 30px;
+  padding-right: 10px;
+
+/* #f2f5f5; */
+  background: #f2f5f5;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+
+  transform-origin: 0% 10%;
+  transform: translateX(150%);
+  
+  transition: transform 0.5s cubic-bezier(0.7,0.3,0.05,1.0);
+}
+
+#menu li
+{
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked ~ ul
+{
+  transform: none;
+}
